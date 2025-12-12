@@ -17,6 +17,7 @@
       background-color: #eee;
       font-family: "Montserrat", sans-serif;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
@@ -33,8 +34,10 @@
       padding: 40px;
     }
     img{
-      width: 200px;
+      width: 400px;
       height: auto;
+      margin-bottom: -100px;
+      margin-top: 40px;
     }
     h2{
       text-transform: uppercase;
@@ -112,6 +115,11 @@
       animation-delay: 0.4s;
     }
 
+    .dots-only-container{
+      margin-top: -20px;
+      margin-bottom: -6px;
+    }
+
     /* Animações */
     @keyframes pulse {
       0%, 60%, 100% {
@@ -177,13 +185,22 @@
       .dots-pulse {
         gap: 10px;
       }
+      img{
+        width: 300px;
+        height: auto;
+        margin-bottom: -50px;
+      }
     }
   </style>
 </head>
 <body>
 
+  <img src="Logo Unilavras Oficial_2019.png" alt="">
+
   <div class="container">
-    <img src="https://unilavras.edu.br/new_site/wp-content/uploads/2018/10/Logo-para-site-barra-de-menu-1.png" alt="Logo">
+    
+
+    <h2>Estamos passando por uma manutenção</h2>
     <div class="dots-only-container">
       <div class="dots-pulse">
         <span class="dot-pulse"></span>
@@ -191,8 +208,6 @@
         <span class="dot-pulse"></span>
       </div>
     </div>
-
-    <h2>Estamos passando por uma manutenção</h2>
 
     <p>Mas você pode continuar acessando alguns dos nossos links:</p>
 
