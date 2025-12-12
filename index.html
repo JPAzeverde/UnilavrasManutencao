@@ -3,105 +3,218 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Manutenção | Unilavras</title>
+  <title>Manutenção Unilavras</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    body {
+    *{
       margin: 0;
       padding: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f4f4f4;
-      color: #222;
+      box-sizing: border-box;
+    }
+    body{
+      background-color: #eee;
+      font-family: "Montserrat", sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .container{
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+      width: 80%;
+      margin: auto;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      padding: 40px;
+    }
+    img{
+      width: 200px;
+      height: auto;
+    }
+    h2{
+      text-transform: uppercase;
+      font-size: 28px;
+      margin-top: -20px;
+      margin-bottom: 30px;
+      text-align: center;
+      color: #001631;
+    }
+    p{
+      font-size: 22px;
+      font-weight: 500;
+      margin-bottom: 30px;
+      color: #001631;
+    }
+    .sectionBTN{
+      display: flex;
+      flex-direction: row;
+      gap: 50px;
+      margin: 20px 0 0;
+    }
+    a{
+      text-decoration: none;
+      font-size: 15px;
+      text-transform: uppercase;
+      text-align: center;
+      font-weight: 600;
+      color: white;
+      background-color: #009EE4;
+      border-radius: 40px;
+      padding: 8px 0;
+      width:  300px;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      transition: .3s;
+      border: solid 1px #009EE4;
+    }
+    a:hover{
+      background-color: #fff;
+      color: #009EE4;
+      transform: scale(1.05);
+    }
+
+    /* Container apenas para os dots */
+    .dots-only-container {
+      margin: 30px 0;
+      display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      text-align: center;
-      padding: 20px;
+      height: 50px;
     }
 
-    .container {
-      max-width: 420px;
-      width: 100%;
-      background: white;
-      padding: 32px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    /* Estilo 1: Dots pulsantes */
+    .dots-pulse {
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      gap: 15px;
     }
 
-    img {
-      max-width: 160px;
-      margin-bottom: 22px;
+    .dot-pulse {
+      width: 10px;
+      height: 10px;
+      background-color: #009EE4;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite ease-in-out;
     }
 
-    h2 {
-      font-size: 20px;
-      margin-bottom: 16px;
-      font-weight: 600;
+    .dot-pulse:nth-child(1) {
+      animation-delay: 0s;
     }
 
-    p {
-      margin-bottom: 24px;
-      font-size: 15px;
-      line-height: 1.5;
+    .dot-pulse:nth-child(2) {
+      animation-delay: 0.2s;
     }
 
-    a {
-      display: block;
-      width: 100%;
-      margin: 8px 0;
-      padding: 12px;
-      border-radius: 8px;
-      background: #005baa;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.2s;
+    .dot-pulse:nth-child(3) {
+      animation-delay: 0.4s;
     }
 
-    a:hover {
-      background: #004c8d;
+    /* Animações */
+    @keyframes pulse {
+      0%, 60%, 100% {
+        transform: scale(1);
+        opacity: 0.7;
+      }
+      30% {
+        transform: scale(1.5);
+        opacity: 1;
+      }
     }
 
-    .whats {
-      background: #25d366;
+    /* Responsividade */
+    @media (max-width: 1000px) {
+      .sectionBTN {
+        gap: 20px;
+      }
+      
+      h2 {
+        font-size: 22px;
+      }
+      
+      p {
+        font-size: 16px;
+        text-align: center;
+      }
+      
+      .dot-pulse {
+        width: 15px;
+        height: 15px;
+      }
+      
+      .dots-pulse {
+        gap: 12px;
+      }
     }
-
-    .whats:hover {
-      background: #1fb456;
+    
+    @media (max-width: 800px) {
+      .container {
+        width: 95%;
+        padding: 40px 6px;
+      }
+      
+      .sectionBTN {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      a {
+        width: 250px;
+        font-size: 13px;
+      }
+      
+      p {
+        margin-bottom: 8px;
+      }
+      
+      .dot-pulse {
+        width: 10px;
+        height: 10px;
+      }
+      
+      .dots-pulse {
+        gap: 10px;
+      }
     }
-
   </style>
 </head>
 <body>
 
   <div class="container">
-    <!-- Substitua por <img src="logo.png"> -->
     <img src="https://unilavras.edu.br/new_site/wp-content/uploads/2018/10/Logo-para-site-barra-de-menu-1.png" alt="Logo">
+    <div class="dots-only-container">
+      <div class="dots-pulse">
+        <span class="dot-pulse"></span>
+        <span class="dot-pulse"></span>
+        <span class="dot-pulse"></span>
+      </div>
+    </div>
 
     <h2>Estamos passando por uma manutenção</h2>
 
     <p>Mas você pode continuar acessando alguns dos nossos links:</p>
 
-    <a href="https://unilavras.pro.typeform.com/vest2026?typeform-source=unilavras.edu.br" target="_blank">
-      Inscrição do Vestibular
-    </a>
+    <div class="sectionBTN">
+      <a href="https://unilavras.pro.typeform.com/vest2026?typeform-source=unilavras.edu.br" target="_blank">
+        Inscrição do Vestibular
+      </a>
 
-    <a href="https://novoportal.unilavras.edu.br/sessions/login" target="_blank">
-      Portal Unilavras
-    </a>
+      <a href="https://novoportal.unilavras.edu.br/sessions/login" target="_blank">
+        Portal Unilavras
+      </a>
+    </div>
+    
+    <div class="sectionBTN">
+      <a href="https://ats.abler.com.br/jobs/unilavras" target="_blank">
+        Trabalhe conosco
+      </a>
 
-    <a href="https://ats.abler.com.br/jobs/unilavras" target="_blank">
-      Trabalhe conosco
-    </a>
-
-    <a class="whats" href="https://api.whatsapp.com/send/?phone=5503508002832833&text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es.&type=phone_number&app_absent=0" target="_blank">
-      Conversar com nosso time
-    </a>
+      <a class="whats" href="https://api.whatsapp.com/send/?phone=5503508002832833&text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es.&type=phone_number&app_absent=0" target="_blank">
+        Conversar com nosso time
+      </a>
+    </div>
   </div>
 
 </body>
