@@ -8,58 +8,101 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    *{
+    /* Reset e Configurações Gerais */
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    body{
+
+    body {
       background-color: #eee;
       font-family: "Montserrat", sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      /* min-height permite scroll se a tela for muito pequena na vertical */
+      min-height: 100vh; 
+      padding: 20px;
     }
-    .container{
+
+    /* Imagem da Logo */
+    .logo-img {
+      width: 400px;
+      max-width: 90%; /* Garante que não estoure em telas pequenas */
+      height: auto;
+      margin-bottom: 0px; /* Ajuste leve para melhor encaixe */
+      z-index: 2; /* Garante que fique acima do container */
+      position: relative;
+    }
+
+    /* Container Principal */
+    .container {
       background-color: #fff;
       border-radius: 10px;
-      box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-      width: 80%;
-      margin: auto;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, 
+                  rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+      width: 100%;
+      max-width: 800px; /* Limite máximo para monitores grandes */
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 40px;
-    }
-    img{
-      width: 400px;
-      height: auto;
-      margin-bottom: -100px;
-      margin-top: 40px;
-    }
-    h2{
-      text-transform: uppercase;
-      font-size: 28px;
-      margin-top: -20px;
-      margin-bottom: 30px;
+      padding: 100px 40px 40px 40px; /* Padding top maior para compensar a logo */
       text-align: center;
-      color: #001631;
     }
-    p{
-      font-size: 22px;
+
+    /* Textos */
+    h2 {
+      text-transform: uppercase;
+      font-size: clamp(20px, 4vw, 28px); /* Tamanho de fonte fluido */
+      margin-bottom: 20px;
+      color: #001631;
+      line-height: 1.2;
+    }
+
+    p {
+      font-size: clamp(16px, 3vw, 22px);
       font-weight: 500;
       margin-bottom: 30px;
       color: #001631;
     }
-    .sectionBTN{
+
+    /* Área dos Dots */
+    .dots-container {
+      margin: 10px 0 30px 0;
       display: flex;
-      flex-direction: row;
-      gap: 50px;
-      margin: 20px 0 0;
+      justify-content: center;
+      align-items: center;
     }
-    a{
+
+    .dots-pulse {
+      display: flex;
+      gap: 15px;
+    }
+
+    .dot-pulse {
+      width: 12px;
+      height: 12px;
+      background-color: #009EE4;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    .dot-pulse:nth-child(1) { animation-delay: 0s; }
+    .dot-pulse:nth-child(2) { animation-delay: 0.2s; }
+    .dot-pulse:nth-child(3) { animation-delay: 0.4s; }
+
+    /* Área dos Botões */
+    .buttons-wrapper {
+      display: flex;
+      flex-wrap: wrap; /* Permite que os botões caiam para a linha de baixo */
+      gap: 20px;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .btn {
       text-decoration: none;
       font-size: 15px;
       text-transform: uppercase;
@@ -68,113 +111,43 @@
       color: white;
       background-color: #009EE4;
       border-radius: 40px;
-      padding: 8px 0;
-      width:  300px;
-      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-      transition: .3s;
+      padding: 12px 20px;
+      
+      /* Flexibilidade do botão */
+      width: 100%;
+      max-width: 320px; /* Tamanho máximo do botão */
+      flex: 1 1 280px; /* Tenta ficar com 280px, mas pode crescer ou diminuir */
+      
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, 
+                  rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      transition: all 0.3s ease;
       border: solid 1px #009EE4;
     }
-    a:hover{
+
+    .btn:hover {
       background-color: #fff;
       color: #009EE4;
-      transform: scale(1.05);
-    }
-
-    /* Container apenas para os dots */
-    .dots-only-container {
-      margin: 30px 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 50px;
-    }
-
-    /* Estilo 1: Dots pulsantes */
-    .dots-pulse {
-      display: flex;
-      gap: 15px;
-    }
-
-    .dot-pulse {
-      width: 10px;
-      height: 10px;
-      background-color: #009EE4;
-      border-radius: 50%;
-      animation: pulse 1.5s infinite ease-in-out;
-    }
-
-    .dot-pulse:nth-child(1) {
-      animation-delay: 0s;
-    }
-
-    .dot-pulse:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-
-    .dot-pulse:nth-child(3) {
-      animation-delay: 0.4s;
-    }
-
-    .dots-only-container{
-      margin-top: -20px;
-      margin-bottom: -6px;
+      transform: translateY(-3px); /* Efeito visual melhor que scale */
     }
 
     /* Animações */
     @keyframes pulse {
-      0%, 60%, 100% {
-        transform: scale(1);
-        opacity: 0.7;
-      }
-      30% {
-        transform: scale(1.5);
-        opacity: 1;
-      }
+      0%, 60%, 100% { transform: scale(1); opacity: 0.7; }
+      30% { transform: scale(1.5); opacity: 1; }
     }
 
-    /* Responsividade */
-    @media (max-width: 1000px) {
-      .sectionBTN {
-        gap: 20px;
-      }
-      
-      h2 {
-        font-size: 22px;
-      }
-      
-      p {
-        font-size: 16px;
-        text-align: center;
-      }
-      
-      .dot-pulse {
-        width: 15px;
-        height: 15px;
-      }
-      
-      .dots-pulse {
-        gap: 12px;
-      }
-    }
-    
-    @media (max-width: 800px) {
+    /* Responsividade Fina */
+    @media (max-width: 600px) {
       .container {
-        width: 95%;
-        padding: 40px 6px;
+        padding: 80px 20px 30px 20px; /* Reduz padding lateral no mobile */
       }
       
-      .sectionBTN {
-        flex-direction: column;
-        gap: 15px;
+      .logo-img {
+        width: 300px;
       }
-      
-      a {
-        width: 250px;
-        font-size: 13px;
-      }
-      
-      p {
-        margin-bottom: 8px;
+
+      .dots-pulse {
+        gap: 10px;
       }
       
       .dot-pulse {
@@ -182,26 +155,22 @@
         height: 10px;
       }
       
-      .dots-pulse {
-        gap: 10px;
-      }
-      img{
-        width: 300px;
-        height: auto;
-        margin-bottom: -50px;
+      .btn {
+        font-size: 13px;
+        padding: 10px 15px;
       }
     }
   </style>
 </head>
 <body>
 
-  <img src="Logo Unilavras Oficial_2019.png" alt="">
+  <img src="Logo Unilavras Oficial_2019.png" alt="Logo Unilavras" class="logo-img">
 
   <div class="container">
     
-
     <h2>Estamos passando por uma manutenção</h2>
-    <div class="dots-only-container">
+    
+    <div class="dots-container">
       <div class="dots-pulse">
         <span class="dot-pulse"></span>
         <span class="dot-pulse"></span>
@@ -211,25 +180,24 @@
 
     <p>Mas você pode continuar acessando alguns dos nossos links:</p>
 
-    <div class="sectionBTN">
-      <a href="https://unilavras.pro.typeform.com/vest2026?typeform-source=unilavras.edu.br" target="_blank">
+    <div class="buttons-wrapper">
+      <a class="btn" href="https://unilavras.pro.typeform.com/vest2026?typeform-source=unilavras.edu.br" target="_blank">
         Inscrição do Vestibular
       </a>
 
-      <a href="https://novoportal.unilavras.edu.br/sessions/login" target="_blank">
+      <a class="btn" href="https://novoportal.unilavras.edu.br/sessions/login" target="_blank">
         Portal Unilavras
       </a>
-    </div>
-    
-    <div class="sectionBTN">
-      <a href="https://ats.abler.com.br/jobs/unilavras" target="_blank">
+   
+      <a class="btn" href="https://ats.abler.com.br/jobs/unilavras" target="_blank">
         Trabalhe conosco
       </a>
 
-      <a class="whats" href="https://api.whatsapp.com/send/?phone=5503508002832833&text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es.&type=phone_number&app_absent=0" target="_blank">
+      <a class="btn whats" href="https://api.whatsapp.com/send/?phone=5503508002832833&text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es.&type=phone_number&app_absent=0" target="_blank">
         Conversar com nosso time
       </a>
     </div>
+
   </div>
 
 </body>
